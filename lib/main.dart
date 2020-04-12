@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pinterest_layout/src/page/emergancy_page.dart';
-import 'package:pinterest_layout/src/page/pinterest_page.dart';
+import 'package:pinterest_layout/src/page/sliver_page.dart';
  
+
+// import 'package:pinterest_layout/src/page/emergancy_page.dart';
+// import 'package:pinterest_layout/src/page/pinterest_page.dart';
+
+
 void main() => runApp(MyApp());
  
 class MyApp extends StatelessWidget {
@@ -10,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: EmergancyPage()
+      home: SliverPage()
     );
   }
 }
