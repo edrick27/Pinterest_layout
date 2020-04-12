@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:animate_do/animate_do.dart';
+
 import 'package:pinterest_layout/Widgets/boton.dart';
 import 'package:pinterest_layout/Widgets/iconHeaders.dart';
 
@@ -27,12 +29,15 @@ class EmergancyPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
      List listBotons = items.map(
-      (item) => Boton( 
-        icon: item.icon, 
-        texto: item.texto, 
-        color1: item.color1, 
-        color2: item.color2, 
-        onPress: (){ print("opn tap"); } 
+      (item) => FadeInLeft(
+        duration: Duration(milliseconds: 1000),
+        child: Boton( 
+          icon: item.icon, 
+          texto: item.texto, 
+          color1: item.color1, 
+          color2: item.color2, 
+          onPress: (){ print("opn tap"); } 
+        ),
       )
      ).toList();
 
