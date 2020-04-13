@@ -88,19 +88,19 @@ class _MenuItems extends StatelessWidget {
     
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: List.generate(menuItems.length, (i) => _menuButton(i, this.menuItems[i]))
+      children: List.generate(menuItems.length, (i) => _MenuButton(i, this.menuItems[i]))
     );
   
   }
 
 }
 
-class  _menuButton extends StatelessWidget {
+class  _MenuButton extends StatelessWidget {
 
   int index;
   PinterestButton button;
 
-  _menuButton(this.index, this.button);
+  _MenuButton(this.index, this.button);
 
   @override
   Widget build(BuildContext context) {
