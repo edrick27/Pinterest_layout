@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pinterest_layout/src/routes/route.dart';
+import 'package:pinterest_layout/src/themes/theme_changer.dart';
+import 'package:provider/provider.dart';
 
 
 class LauncherPage extends StatelessWidget {
@@ -46,6 +48,8 @@ class _MenuPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final appTheme = Provider.of<ThemeChanger>(context);
     
     return Drawer(
       child: Container(
@@ -72,9 +76,9 @@ class _MenuPrincipal extends StatelessWidget {
               leading: Icon(Icons.lightbulb_outline, color: Colors.blue),
               title: Text('Dark Mode'),
               trailing: Switch.adaptive(
-                value: true, 
+                value: appTheme.darkTheme, 
                 activeColor: Colors.blue,
-                onChanged: (value){}
+                onChanged: (value) => appTheme.darkTheme = value
               ),
             ),
 
@@ -82,9 +86,9 @@ class _MenuPrincipal extends StatelessWidget {
               leading: Icon(Icons.add_to_home_screen, color: Colors.blue),
               title: Text('Custom Theme'),
               trailing: Switch.adaptive(
-                value: true, 
+                value: appTheme.customTheme, 
                 activeColor: Colors.blue,
-                onChanged: (value){}
+                onChanged: (value) => appTheme.customTheme = value
               ),
             )
           ],
