@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pinterest_layout/Widgets/menu.dart';
+import 'package:pinterest_layout/src/themes/theme_changer.dart';
 import 'package:provider/provider.dart';
 
 class PinterestPage extends StatelessWidget {
@@ -70,6 +71,8 @@ class __CreateGridState extends State<_CreateGrid> {
 
   @override
   Widget build(BuildContext context) {
+
+    final appTheme = Provider.of<ThemeChanger>(context);
     
     return Container(
       child: StaggeredGridView.countBuilder(
@@ -103,9 +106,12 @@ class __CreateGridState extends State<_CreateGrid> {
 class _PrinterestMenuLocation extends StatelessWidget {
 
   const _PrinterestMenuLocation();
+  
 
   @override
   Widget build(BuildContext context) {
+
+    final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
 
     final width = MediaQuery.of(context).size.width;
 
@@ -123,7 +129,8 @@ class _PrinterestMenuLocation extends StatelessWidget {
               PinterestButton(icon: Icons.notifications, onpress: (){ print('tap notifications'); }),
               PinterestButton(icon: Icons.supervised_user_circle, onpress: (){ print('tap supervised_user_circle'); }),
             ],
-            mostrar: mostrar
+            mostrar: mostrar,
+            backGroundColor: appTheme.scaffoldBackgroundColor,
           )
         )
       )

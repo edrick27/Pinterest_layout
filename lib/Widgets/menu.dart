@@ -18,10 +18,12 @@ class PinterestMenu extends StatelessWidget {
 
   bool mostrar;
   final List<PinterestButton> items;
+  Color backGroundColor;
 
   PinterestMenu({
     @required this.items,
     this.mostrar,
+    this.backGroundColor,
   });
 
   
@@ -35,6 +37,7 @@ class PinterestMenu extends StatelessWidget {
         duration: Duration(milliseconds: 250),
         opacity: mostrar ? 1 : 0,
         child: _PinterestMenuBackground(
+          backGroundColor: backGroundColor,
           child: _MenuItems( menuItems: items )
         )
       )
@@ -47,9 +50,11 @@ class PinterestMenu extends StatelessWidget {
 class _PinterestMenuBackground extends StatelessWidget {
   
   final Widget child;
+  final Color backGroundColor;
 
   _PinterestMenuBackground({
-    @required this.child
+    @required this.child,
+    @required this.backGroundColor
   });
 
   @override
@@ -60,7 +65,7 @@ class _PinterestMenuBackground extends StatelessWidget {
       height: 60,
       padding: EdgeInsets.symmetric(horizontal: 17),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: backGroundColor,
         borderRadius:  BorderRadius.all( Radius.circular(100) ),
         boxShadow: <BoxShadow>[
           BoxShadow(
