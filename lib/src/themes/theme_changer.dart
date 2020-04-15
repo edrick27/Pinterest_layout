@@ -15,14 +15,7 @@ class ThemeChanger with ChangeNotifier {
       case 2: //dark
         _darkTheme = true;
         _customTheme = false;
-        _currentTheme = ThemeData.dark().copyWith(
-          accentColor: Color(0xff48A0EB),
-          primaryColorLight: Colors.white,
-          scaffoldBackgroundColor: Color(0xFF000000),
-          textTheme: TextTheme(
-            body1: TextStyle( color: Colors.white )
-          )
-        );
+        _currentTheme = _darkMode;
         break;
 
       case 3: //custom
@@ -37,6 +30,15 @@ class ThemeChanger with ChangeNotifier {
   bool _darkTheme = false;
   bool _customTheme = false;
 
+  ThemeData _darkMode = ThemeData.dark().copyWith(
+    accentColor: Color(0xff48A0EB),
+    primaryColorLight: Colors.white,
+    scaffoldBackgroundColor: Color(0xFF000000),
+    textTheme: TextTheme(
+      body1: TextStyle( color: Colors.white )
+    )
+  );
+
   ThemeData _currentTheme;
 
   ThemeData get currentTheme => _currentTheme;
@@ -48,7 +50,7 @@ class ThemeChanger with ChangeNotifier {
     _customTheme = false;
     _darkTheme = value;
 
-    _currentTheme = (value) ? ThemeData.dark() : ThemeData.light();
+    _currentTheme = (value) ? _darkMode : ThemeData.light();
 
     notifyListeners();
   }
@@ -59,7 +61,7 @@ class ThemeChanger with ChangeNotifier {
      _darkTheme = false;
     _customTheme = value;
 
-    _currentTheme = (!value) ? ThemeData.dark() : ThemeData.light();
+    _currentTheme = (!value) ? _darkMode : ThemeData.light();
 
     notifyListeners();
   }
