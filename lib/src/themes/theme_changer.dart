@@ -12,13 +12,20 @@ class ThemeChanger with ChangeNotifier {
         _currentTheme = ThemeData.light();
         break;
 
-      case 2: //light
+      case 2: //dark
         _darkTheme = true;
         _customTheme = false;
-        _currentTheme = ThemeData.dark();
+        _currentTheme = ThemeData.dark().copyWith(
+          accentColor: Color(0xff48A0EB),
+          primaryColorLight: Colors.white,
+          scaffoldBackgroundColor: Color(0xFF000000),
+          textTheme: TextTheme(
+            body1: TextStyle( color: Colors.white )
+          )
+        );
         break;
 
-      case 3: //light
+      case 3: //custom
         _darkTheme = false;
         _customTheme = true;
         break;
