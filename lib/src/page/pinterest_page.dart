@@ -73,11 +73,19 @@ class __CreateGridState extends State<_CreateGrid> {
   Widget build(BuildContext context) {
 
     final appTheme = Provider.of<ThemeChanger>(context);
+
+    int count;
+
+    if (MediaQuery.of(context).size.width > 500) {
+      count = 3;
+    } else {
+      count = 2;
+    }
     
     return Container(
       child: StaggeredGridView.countBuilder(
         controller: controller,
-        crossAxisCount: 4,
+        crossAxisCount: count,
         itemCount: items.length,
         itemBuilder: (BuildContext context, int index){
           
@@ -95,7 +103,7 @@ class __CreateGridState extends State<_CreateGrid> {
             )
           );
         },
-        staggeredTileBuilder: (int index) => StaggeredTile.count(2, index.isEven ? 2 : 3),
+        staggeredTileBuilder: (int index) => StaggeredTile.count(1, index.isEven ? 1 : 2),
         mainAxisSpacing: 4.0,
         crossAxisSpacing: 4.0,
       )
@@ -113,25 +121,35 @@ class _PrinterestMenuLocation extends StatelessWidget {
 
     final appTheme = Provider.of<ThemeChanger>(context).currentTheme;
 
-    final width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
 
     final mostrar = Provider.of<_menuModel>(context).mostrar;
+
+    if( width > 500) {
+
+      width = width - 300;
+
+    }
 
     return Positioned(
       bottom: 25,
       child: Container(
         width: width,
-        child: Align(
-          child: PinterestMenu(
-            items: [
-              PinterestButton(icon: Icons.pie_chart, onpress: (){ print('tap pie_chart'); }),
-              PinterestButton(icon: Icons.search, onpress: (){ print('tap search'); }),
-              PinterestButton(icon: Icons.notifications, onpress: (){ print('tap notifications'); }),
-              PinterestButton(icon: Icons.supervised_user_circle, onpress: (){ print('tap supervised_user_circle'); }),
-            ],
-            mostrar: mostrar,
-            backGroundColor: appTheme.scaffoldBackgroundColor,
-          )
+        child: Row(
+          children: <Widget>[
+            Spacer(),
+            PinterestMenu(
+              items: [
+                PinterestButton(icon: Icons.pie_chart, onpress: (){ print('tap pie_chart'); }),
+                PinterestButton(icon: Icons.search, onpress: (){ print('tap search'); }),
+                PinterestButton(icon: Icons.notifications, onpress: (){ print('tap notifications'); }),
+                PinterestButton(icon: Icons.supervised_user_circle, onpress: (){ print('tap supervised_user_circle'); }),
+              ],
+              mostrar: mostrar,
+              backGroundColor: appTheme.scaffoldBackgroundColor,
+            ),
+            Spacer()
+          ],
         )
       )
     );
